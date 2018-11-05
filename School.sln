@@ -3,29 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discoteca", "Discoteca\Discoteca.csproj", "{2FD1DC01-ECD9-4FDE-8FD9-372145DD8369}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discoteca", "Projects\Discoteca\Discoteca.csproj", "{2FD1DC01-ECD9-4FDE-8FD9-372145DD8369}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fotocopie.Interface", "Fotocopie\Fotocopie.Interface\Fotocopie.Interface.csproj", "{8CD933D1-881C-4AAE-A986-EC101926C0EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fotocopie.Interface", "Projects\Fotocopie\Fotocopie.Interface\Fotocopie.Interface.csproj", "{8CD933D1-881C-4AAE-A986-EC101926C0EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fotocopie.Logic", "Fotocopie\Fotocopie.Logic\Fotocopie.Logic.csproj", "{A2D0F9D5-A889-4247-AED5-A8DE32E2955F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fotocopie.Logic", "Projects\Fotocopie\Fotocopie.Logic\Fotocopie.Logic.csproj", "{A2D0F9D5-A889-4247-AED5-A8DE32E2955F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fotocopie.Test", "Fotocopie\Fotocopie.Test\Fotocopie.Test.csproj", "{61897176-954C-4F0B-AFE3-461CB8C5AE77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fotocopie.Test", "Projects\Fotocopie\Fotocopie.Test\Fotocopie.Test.csproj", "{61897176-954C-4F0B-AFE3-461CB8C5AE77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimaEsercitazione", "PrimaEsercitazione\PrimaEsercitazione.csproj", "{B793AA89-FFFC-4901-B70A-FEFF12676295}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimaEsercitazione", "Projects\PrimaEsercitazione\PrimaEsercitazione.csproj", "{B793AA89-FFFC-4901-B70A-FEFF12676295}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temperature", "Temperature\Temperature.csproj", "{94E4E7A1-B1A2-44DE-9B81-F20C9B34B37D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Temperature", "Projects\Temperature\Temperature.csproj", "{94E4E7A1-B1A2-44DE-9B81-F20C9B34B37D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuozienteEResto", "QuozienteEResto\QuozienteEResto.csproj", "{D04CF1AD-FA49-4FDE-8740-692F8C84D49C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuozienteEResto", "Projects\QuozienteEResto\QuozienteEResto.csproj", "{D04CF1AD-FA49-4FDE-8740-692F8C84D49C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter.Test", "Converter.Test\Converter.Test.csproj", "{5562C362-F26D-45A5-9797-00564143008D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter.Test", "Projects\Converter.Test\Converter.Test.csproj", "{5562C362-F26D-45A5-9797-00564143008D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Converter.Core", "Converter.Core\Converter.Core.csproj", "{E260FF71-2593-48A0-94C9-A058F217E0CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Converter.Core", "Projects\Converter.Core\Converter.Core.csproj", "{E260FF71-2593-48A0-94C9-A058F217E0CB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Converter", "Converter", "{108A0D16-E4C3-4587-A75A-28B68118BAC0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Converter", "Projects\Converter", "{108A0D16-E4C3-4587-A75A-28B68118BAC0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fotocopie", "Fotocopie", "{0DD0800E-C436-4289-81F7-709E2B239649}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fotocopie", "Projects\Fotocopie", "{0DD0800E-C436-4289-81F7-709E2B239649}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter.Interface", "Converter.Interface\Converter.Interface.csproj", "{8ED95F48-CDE5-4640-B50B-11A36A3F06C2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter.Interface", "Projects\Converter.Interface\Converter.Interface.csproj", "{8ED95F48-CDE5-4640-B50B-11A36A3F06C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
