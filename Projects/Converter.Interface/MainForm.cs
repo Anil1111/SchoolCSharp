@@ -45,13 +45,11 @@ namespace Converter.Interface
             var @base = (ulong)fieldBaseLeft.Value;
             var valid = ulong.TryParse(txtNumberLeft.Text, out ulong num);
 
-            while (num > 0)
+            while (valid && num > 0)
             {
                 if (num % 10 >= @base)
-                {
                     valid = false;
-                    break;
-                }
+                
                 num /= 10;
             }
 
@@ -64,13 +62,11 @@ namespace Converter.Interface
             var @base = (ulong)fieldBaseRight.Value;
             var valid = ulong.TryParse(txtNumberRight.Text, out ulong num);
 
-            while (num > 0)
+            while (valid && num > 0)
             {
                 if (num % 10 >= @base)
-                {
                     valid = false;
-                    break;
-                }
+                
                 num /= 10;
             }
 
