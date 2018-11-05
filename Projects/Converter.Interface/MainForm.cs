@@ -18,29 +18,64 @@ namespace Converter.Interface
             InitializeComponent();
         }
 
-        private void OnCompute(object sender, EventArgs e)
+        private void OnLeftToRight(object sender, EventArgs e)
         {
-            if (sender is NumericUpDown box)
-            {
-                ulong num, fromBase, toBase;
-                NumericUpDown targetNum;
-                if (box.Name.EndsWith("1"))
-                {
-                    num = (ulong) fieldNum1.Value;
-                    fromBase = (ulong) fieldBase1.Value;
-                    targetNum = fieldNum2;
-                    toBase = (ulong) fieldBase2.Value;
-                }
-                else
-                {
-                    num = (ulong)fieldNum2.Value;
-                    fromBase = (ulong)fieldBase2.Value;
-                    targetNum = fieldNum1;
-                    toBase = (ulong) fieldBase1.Value;
-                }
+            if (!ulong.TryParse(txtNumberLeft.Text, out ulong num))
+                return;
 
-                targetNum.Text = BaseConverter.Convert(num, fromBase, toBase).ToString();
+            ulong fromBase = (ulong)fieldBaseLeft.Value;
+            ulong toBase = (ulong)fieldBaseRight.Value;
+
+            txtNumberRight.Text = BaseConverter.Convert(num, fromBase, toBase).ToString();
+        }
+
+        private void OnRightToLeft(object sender, EventArgs e)
+        {
+            if (!ulong.TryParse(txtNumberRight.Text, out ulong num))
+                return;
+
+            ulong fromBase = (ulong)fieldBaseRight.Value;
+            ulong toBase = (ulong)fieldBaseLeft.Value;
+
+            txtNumberLeft.Text = BaseConverter.Convert(num, fromBase, toBase).ToString();
+        }
+
+        private void OnValidatingLeft(object sender, EventArgs e)
+        {
+            var @base = (ulong)fieldBaseLeft.Value;
+            var valid = ulong.TryParse(txtNumberLeft.Text, out ulong num);
+
+            while (num > 0)
+            {
+                if (num % 10 >= @base)
+                {
+                    valid = false;
+                    break;
+                }
+                num /= 10;
             }
+
+            txtNumberLeft.ForeColor = valid ? Color.Black : Color.Red;
+            btnLeftToRight.Enabled = valid;
+        }
+        
+        private void OnValidatingRight(object sender, EventArgs e)
+        {
+            var @base = (ulong)fieldBaseRight.Value;
+            var valid = ulong.TryParse(txtNumberRight.Text, out ulong num);
+
+            while (num > 0)
+            {
+                if (num % 10 >= @base)
+                {
+                    valid = false;
+                    break;
+                }
+                num /= 10;
+            }
+
+            txtNumberRight.ForeColor = valid ? Color.Black : Color.Red;
+            btnRightToLeft.Enabled = valid;
         }
     }
 }
