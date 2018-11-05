@@ -18,11 +18,12 @@ namespace Converter.Core
                 toBase < 2 || toBase > 10)
                 throw new ArgumentException($"Cannot convert from base {fromBase} to base {toBase}: Bases must be within 2 and 10");
 
-            ulong output = 0;
-            var weight = fromBase;
+            var output = 0UL;
+            var weight = 1UL;
             while (num > 0)
             {
-                output += (num /= toBase) % toBase * weight;
+                output += num % toBase * weight;
+                num /= toBase;
                 weight *= fromBase;
             }
             
