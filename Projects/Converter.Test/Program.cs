@@ -14,17 +14,16 @@ namespace Converter.Test
             {
                 Console.SetCursorPosition(0, 0);
                 Console.Write("Number: ");
-                if (!int.TryParse(Console.ReadLine(), out int fromNum))
+                if (!ulong.TryParse(Console.ReadLine(), out ulong fromNum))
                     continue;
                 Console.Write("Base: ");
-                if (!int.TryParse(Console.ReadLine(), out int fromBase))
+                if (!ulong.TryParse(Console.ReadLine(), out ulong fromBase))
                     continue;
                 Console.Write("ToBase: ");
-                if (!int.TryParse(Console.ReadLine(), out int toBase))
+                if (!ulong.TryParse(Console.ReadLine(), out ulong toBase))
                     continue;
 
-                var base10 = BaseConverter.ToBase10(fromNum, fromBase);
-                var toNum = BaseConverter.ToBase(base10, toBase);
+                var toNum = BaseConverter.Convert(fromNum, fromBase, toBase);
                 
                 Console.Clear();
                 Console.SetCursorPosition(0, 3);

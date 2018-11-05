@@ -1,6 +1,6 @@
 ﻿namespace Converter.Interface
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Variabile di progettazione necessaria.
@@ -119,7 +119,7 @@
             this.Controls.Add(this.fieldBase2);
             this.Controls.Add(this.fieldNum1);
             this.Controls.Add(this.fieldNum2);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Convertitore";
             ((System.ComponentModel.ISupportInitialize)(this.fieldNum2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fieldBase2)).EndInit();

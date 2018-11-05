@@ -11,9 +11,9 @@ using Converter.Core;
 
 namespace Converter.Interface
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -22,25 +22,24 @@ namespace Converter.Interface
         {
             if (sender is NumericUpDown box)
             {
-                int num, fromBase, toBase;
+                ulong num, fromBase, toBase;
                 NumericUpDown targetNum;
                 if (box.Name.EndsWith("1"))
                 {
-                    num = (int) fieldNum1.Value;
-                    fromBase = (int) fieldBase1.Value;
+                    num = (ulong) fieldNum1.Value;
+                    fromBase = (ulong) fieldBase1.Value;
                     targetNum = fieldNum2;
-                    toBase = (int) fieldBase2.Value;
+                    toBase = (ulong) fieldBase2.Value;
                 }
                 else
                 {
-                    num = (int)fieldNum2.Value;
-                    fromBase = (int)fieldBase2.Value;
+                    num = (ulong)fieldNum2.Value;
+                    fromBase = (ulong)fieldBase2.Value;
                     targetNum = fieldNum1;
-                    toBase = (int) fieldBase1.Value;
+                    toBase = (ulong) fieldBase1.Value;
                 }
 
-                var base10 = BaseConverter.ToBase10(num, fromBase);
-                targetNum.Text = BaseConverter.ToBase(base10, toBase).ToString();
+                targetNum.Text = BaseConverter.Convert(num, fromBase, toBase).ToString();
             }
         }
     }
