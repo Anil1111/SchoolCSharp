@@ -1,17 +1,38 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Management.Instrumentation;
-using System.Threading;
-using Converter.Core;
 
 namespace Converter.Test
 {
-    internal class Program
+    internal static class Program
     {
+        // a 97  0x61
+        // z 122 0x7A
+        // A 65  0x41
+        // Z 90  0x5A
+        // 0 48  0x30
+        // 9 57  0x39
+        private static bool IsValid(char a, int @base)
+        {
+            if (a >= 48 && a - 48 < @base)
+                return true;
+            if (a >= 65 && a - 65 < @base - 10)
+                return true;
+            if (a >= 97 && a - 97 < @base - 10)
+                return true;
+            return false;
+        }
+        
         public static void Main(string[] args)
         {
             while (true)
             {
+                // IsValid test
+                var c = Console.ReadKey().KeyChar;
+                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.WriteLine("{0} {1}", c, IsValid(c, 3), (int) c);
+                Console.WriteLine();
+                
+                /*
+                // Converter tests
                 Console.SetCursorPosition(0, 0);
                 Console.Write("Number: ");
                 if (!ulong.TryParse(Console.ReadLine(), out ulong fromNum))
@@ -30,6 +51,7 @@ namespace Converter.Test
                 Console.WriteLine("Conversion from {0} (base {1}) to {2} (base {3})", 
                     fromNum, fromBase,
                     toNum, toBase);
+                */
 
                 /*
                 // Test to replace DivisibleBy
