@@ -123,7 +123,7 @@ namespace Converter.Interface
             // 
             this.fieldBaseLeft.Location = new System.Drawing.Point(10, 60);
             this.fieldBaseLeft.Maximum = new decimal(new int[] {
-            10,
+            36,
             0,
             0,
             0});
@@ -146,7 +146,7 @@ namespace Converter.Interface
             // 
             this.fieldBaseRight.Location = new System.Drawing.Point(200, 60);
             this.fieldBaseRight.Maximum = new decimal(new int[] {
-            10,
+            36,
             0,
             0,
             0});
@@ -159,7 +159,7 @@ namespace Converter.Interface
             this.fieldBaseRight.Size = new System.Drawing.Size(110, 20);
             this.fieldBaseRight.TabIndex = 3;
             this.fieldBaseRight.Value = new decimal(new int[] {
-            2,
+            10,
             0,
             0,
             0});
