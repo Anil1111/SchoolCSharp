@@ -21,11 +21,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter.Test", "Projects\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Converter.Core", "Projects\Converter.Core\Converter.Core.csproj", "{E260FF71-2593-48A0-94C9-A058F217E0CB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Converter", "Projects\Converter", "{108A0D16-E4C3-4587-A75A-28B68118BAC0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Converter", "Converter", "{108A0D16-E4C3-4587-A75A-28B68118BAC0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fotocopie", "Projects\Fotocopie", "{0DD0800E-C436-4289-81F7-709E2B239649}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fotocopie", "Fotocopie", "{0DD0800E-C436-4289-81F7-709E2B239649}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter.Interface", "Projects\Converter.Interface\Converter.Interface.csproj", "{8ED95F48-CDE5-4640-B50B-11A36A3F06C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar", "Calendar\Calendar.csproj", "{B7CE476D-D440-4534-8DD4-279561255FB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{8ED95F48-CDE5-4640-B50B-11A36A3F06C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8ED95F48-CDE5-4640-B50B-11A36A3F06C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8ED95F48-CDE5-4640-B50B-11A36A3F06C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7CE476D-D440-4534-8DD4-279561255FB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7CE476D-D440-4534-8DD4-279561255FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7CE476D-D440-4534-8DD4-279561255FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7CE476D-D440-4534-8DD4-279561255FB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,5 +90,8 @@ Global
 		{5562C362-F26D-45A5-9797-00564143008D} = {108A0D16-E4C3-4587-A75A-28B68118BAC0}
 		{E260FF71-2593-48A0-94C9-A058F217E0CB} = {108A0D16-E4C3-4587-A75A-28B68118BAC0}
 		{8ED95F48-CDE5-4640-B50B-11A36A3F06C2} = {108A0D16-E4C3-4587-A75A-28B68118BAC0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32D333E6-E146-4195-BBB3-780B79FEAF12}
 	EndGlobalSection
 EndGlobal
