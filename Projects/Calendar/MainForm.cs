@@ -12,9 +12,13 @@ namespace Calendar
             datePicker.Value = DateTime.Now; // Automatically makes the selected date the day the program was launched.
         }
 
+        /// <summary>
+        /// Called when the date gets changed by either the <see cref="DateTimePicker"/> or the <see cref="NumericUpDown"/>s
+        /// </summary>
+        /// <param name="sender">The object which changed the date</param>
+        /// <param name="e">Event parameters</param>
         private void OnDateChange(object sender, EventArgs e)
         {
-            const string elapsedDays = @"Sono passati {0} giorni dall'inizio dell'anno."; // Would have made it a field but we didn't do that yet
             const int fixedYear = 2018;
             
             switch (sender)
@@ -37,16 +41,16 @@ namespace Calendar
                     dayName = colture.TextInfo.ToTitleCase(dayName); // Makes first letter uppercase
 
                     // Updates labels
-                    lblElapsedDays.Text = string.Format(elapsedDays, time.DayOfYear);
+                    lblElapsedDays.Text = $"Sono passati {time.DayOfYear} giorni dall'inizio dell'anno.";
                     lblWeekDay.Text = dayName;
                     break;
                 }
 
-                case NumericUpDown field:
+                case NumericUpDown field: // If the user changed the date through the fields
                 {
-                    // Gets the month and makes the max day value the last day of that month
+                    // Gets the month and makes ensure that the day cannot exceed the month last day
                     var month = (int) fieldMonth.Value;
-                    if (field.Name == "fieldMonth")
+                    if (field == fieldMonth)
                         fieldDay.Maximum = DateTime.DaysInMonth(fixedYear, month);
 
                     // Gets the day
@@ -64,7 +68,7 @@ namespace Calendar
                     dayName = colture.TextInfo.ToTitleCase(dayName); // Makes first letter uppercase
 
                     // Updates labels
-                    lblElapsedDays.Text = string.Format(elapsedDays, time.DayOfYear);
+                    lblElapsedDays.Text = $"Sono passati {time.DayOfYear} giorni dall'inizio dell'anno.";
                     lblWeekDay.Text = dayName;
                     break;
                 }

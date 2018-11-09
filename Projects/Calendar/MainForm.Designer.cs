@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.infoLabelYear = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.infoLabelSeparator1 = new System.Windows.Forms.Label();
+            this.infoLabelSeparator2 = new System.Windows.Forms.Label();
             this.lblElapsedDays = new System.Windows.Forms.Label();
             this.lblWeekDay = new System.Windows.Forms.Label();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
@@ -49,23 +49,23 @@
             this.infoLabelYear.TabIndex = 1;
             this.infoLabelYear.Text = "2018";
             // 
-            // label1
+            // infoLabelSeparator1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(145, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(12, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "/";
+            this.infoLabelSeparator1.AutoSize = true;
+            this.infoLabelSeparator1.Location = new System.Drawing.Point(145, 14);
+            this.infoLabelSeparator1.Name = "infoLabelSeparator1";
+            this.infoLabelSeparator1.Size = new System.Drawing.Size(12, 13);
+            this.infoLabelSeparator1.TabIndex = 1;
+            this.infoLabelSeparator1.Text = "/";
             // 
-            // label2
+            // infoLabelSeparator2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(210, 14);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(12, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "/";
+            this.infoLabelSeparator2.AutoSize = true;
+            this.infoLabelSeparator2.Location = new System.Drawing.Point(210, 14);
+            this.infoLabelSeparator2.Name = "infoLabelSeparator2";
+            this.infoLabelSeparator2.Size = new System.Drawing.Size(12, 13);
+            this.infoLabelSeparator2.TabIndex = 1;
+            this.infoLabelSeparator2.Text = "/";
             // 
             // lblElapsedDays
             // 
@@ -73,7 +73,6 @@
             this.lblElapsedDays.Name = "lblElapsedDays";
             this.lblElapsedDays.Size = new System.Drawing.Size(235, 28);
             this.lblElapsedDays.TabIndex = 3;
-            this.lblElapsedDays.Text = "Sono passati x giorni.";
             this.lblElapsedDays.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblWeekDay
@@ -152,8 +151,8 @@
             this.Controls.Add(this.datePicker);
             this.Controls.Add(this.lblWeekDay);
             this.Controls.Add(this.lblElapsedDays);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.infoLabelSeparator2);
+            this.Controls.Add(this.infoLabelSeparator1);
             this.Controls.Add(this.infoLabelYear);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -167,8 +166,8 @@
 
         #endregion
         private System.Windows.Forms.Label infoLabelYear;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label infoLabelSeparator1;
+        private System.Windows.Forms.Label infoLabelSeparator2;
         private System.Windows.Forms.Label lblElapsedDays;
         private System.Windows.Forms.Label lblWeekDay;
         private System.Windows.Forms.DateTimePicker datePicker;
