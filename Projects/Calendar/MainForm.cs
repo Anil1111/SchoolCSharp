@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -74,5 +75,79 @@ namespace Calendar
                 }
             }
         }
+        
+        // This is the algorithm I would have used if I were to use switch and couldn't use DateTime
+
+        #region Algorithm
+        
+        /// <summary>
+        /// Algorithm to get the day since start of year 2018
+        /// </summary>
+        /// <param name="day">The current day</param>
+        /// <param name="month">The current month</param>
+        /// <returns>Number of days between 01/01/2018 and <i><see cref="day"/></i>/<i><see cref="month"/></i>/2018</returns>
+        // ReSharper disable once UnusedMember.Local
+        private int DayOfYear(int day, Month month)
+        {
+            while (month > Month.January) // While the month is higher than January
+            {
+                // This makes so that the current month is not added to the days count but instead the day parameter is used
+                month--; // Substract 1 to month 
+                switch (month)
+                {
+                    // 31 days months
+                    case Month.January: 
+                    case Month.March:
+                    case Month.May:
+                    case Month.July:
+                    case Month.August:
+                    case Month.October:
+                    case Month.December:
+                        day += 31;
+                        break;
+                    
+                    // 30 days months 
+                    case Month.April:
+                    case Month.June:
+                    case Month.September:
+                    case Month.November:
+                        day += 30;
+                        break;
+                    
+                    // 28/9 days month
+                    case Month.February:
+                        // Year is fixed hence there's no need to check for leap year
+                        day += 28;
+                        break;
+                    
+                    default:
+                        throw new ArgumentOutOfRangeException(nameof(month), month, null);
+                }
+            }
+            return day;
+        }
+
+        /// <summary>
+        /// Represent a month, from 1 to 12
+        /// </summary>
+        /// <remarks>Used only for read-ability, same as using integers</remarks>
+        private enum Month 
+        {
+            // Ensures it's one based
+            January = 1,
+            February = 2,
+            March = 3,
+            April = 4,
+            May = 5,
+            June = 6,
+            July = 7,
+            August = 8,
+            September = 9,
+            October = 10,
+            November = 11,
+            December = 12
+        }
+        
+        #endregion
     }
 }
