@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -87,7 +86,7 @@ namespace Calendar
         /// <param name="month">The current month</param>
         /// <returns>Number of days between 01/01/2018 and <i><see cref="day"/></i>/<i><see cref="month"/></i>/2018</returns>
         // ReSharper disable once UnusedMember.Local
-        private int DayOfYear(int day, Month month)
+        private static int DayOfYear(int day, Month month)
         {
             while (month > Month.January) // While the month is higher than January
             {
@@ -125,6 +124,34 @@ namespace Calendar
                 }
             }
             return day;
+        }
+
+        /// <summary>
+        /// Gets the day of the week
+        /// </summary>
+        /// <param name="dayOfYear">Day since year start</param>
+        /// <returns>Day of the weak</returns>
+        private static string DayOfWeek(int dayOfYear)
+        {
+            const int firstDayOfYear = 0; // First day of year is monday
+            
+            switch (dayOfYear % 7 - 1 + firstDayOfYear) // We substract 1 as the dayOfYear takes consideration of the current day 
+            {
+                default:
+                    return "Lunedi";
+                case 1:
+                    return "Martedi";
+                case 2:
+                    return "Mercoledi";
+                case 3:
+                    return "Giovedi";
+                case 4:
+                    return "Venerdi";
+                case 5:
+                    return "Sabato";
+                case 6:
+                    return "Domenica";
+            }
         }
 
         /// <summary>
