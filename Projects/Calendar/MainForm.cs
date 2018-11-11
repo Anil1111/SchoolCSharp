@@ -135,22 +135,22 @@ namespace Calendar
         {
             const int firstDayOfYear = 0; // First day of year is monday
             
-            switch (dayOfYear % 7 - 1 + firstDayOfYear) // We substract 1 as the dayOfYear takes consideration of the current day 
+            switch (dayOfYear % 7 + firstDayOfYear)
             {
                 default:
-                    return "Lunedi";
-                case 1:
-                    return "Martedi";
-                case 2:
-                    return "Mercoledi";
-                case 3:
-                    return "Giovedi";
-                case 4:
-                    return "Venerdi";
-                case 5:
-                    return "Sabato";
-                case 6:
                     return "Domenica";
+                case 1:
+                    return "Lunedi";
+                case 2:
+                    return "Martedi";
+                case 3:
+                    return "Mercoledi";
+                case 4:
+                    return "Giovedi";
+                case 5:
+                    return "Venerdi";
+                case 6:
+                    return "Sabato";
             }
         }
 
