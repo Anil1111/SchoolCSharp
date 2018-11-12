@@ -36,9 +36,9 @@ namespace Calendar
                     fieldDay.Maximum = DateTime.DaysInMonth(fixedYear, time.Month);
 
                     // Obtains DayOfWeek with correct culture
-                    var colture = CultureInfo.CurrentCulture;
-                    var dayName = colture.DateTimeFormat.GetDayName(time.DayOfWeek);
-                    dayName = colture.TextInfo.ToTitleCase(dayName); // Makes first letter uppercase
+                    var culture = CultureInfo.CurrentCulture;
+                    var dayName = culture.DateTimeFormat.GetDayName(time.DayOfWeek);
+                    dayName = culture.TextInfo.ToTitleCase(dayName); // Makes first letter uppercase
 
                     // Updates labels
                     lblElapsedDays.Text = $"Sono passati {time.DayOfYear} giorni dall'inizio dell'anno.";
@@ -63,9 +63,9 @@ namespace Calendar
                     datePicker.Value = time;
 
                     // Obtains DayOfWeek with correct culture
-                    var colture = CultureInfo.CurrentCulture;
-                    var dayName = colture.DateTimeFormat.GetDayName(time.DayOfWeek);
-                    dayName = colture.TextInfo.ToTitleCase(dayName); // Makes first letter uppercase
+                    var culture = CultureInfo.CurrentCulture;
+                    var dayName = culture.DateTimeFormat.GetDayName(time.DayOfWeek);
+                    dayName = culture.TextInfo.ToTitleCase(dayName); // Makes first letter uppercase
 
                     // Updates labels
                     lblElapsedDays.Text = $"Sono passati {time.DayOfYear} giorni dall'inizio dell'anno.";
@@ -75,7 +75,7 @@ namespace Calendar
             }
         }
         
-        // This is the algorithm I would have used if I were to use switch and couldn't use DateTime
+        // This is the algorithm I would have used if I were to use switches and couldn't use DateTime
 
         #region Algorithm
         
@@ -131,11 +131,12 @@ namespace Calendar
         /// </summary>
         /// <param name="dayOfYear">Day since year start</param>
         /// <returns>Day of the weak</returns>
+        // ReSharper disable once UnusedMember.Local
         private static string DayOfWeek(int dayOfYear)
         {
-            const int firstDayOfYear = 0; // First day of year is monday
+            const int firstDayOfYearOffset = 0; // First day of year is monday
             
-            switch (dayOfYear % 7 + firstDayOfYear)
+            switch (dayOfYear % 7 + firstDayOfYearOffset)
             {
                 default:
                     return "Domenica";
@@ -157,7 +158,7 @@ namespace Calendar
         /// <summary>
         /// Represent a month, from 1 to 12
         /// </summary>
-        /// <remarks>Used only for read-ability, same as using integers</remarks>
+        /// <remarks>Used only for readability, same as using integers</remarks>
         private enum Month 
         {
             // Ensures it's one based
