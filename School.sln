@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar", "Projects\Calend
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeperoNumber", "Projects\NeperoNumber\NeperoNumber.csproj", "{EE506813-AA5B-4DF0-B389-1E839D79D1AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassaforte", "Cassaforte\Cassaforte.csproj", "{4CCE1BBD-ED2A-419C-9B91-F62DA1A07D39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -85,6 +87,10 @@ Global
 		{EE506813-AA5B-4DF0-B389-1E839D79D1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE506813-AA5B-4DF0-B389-1E839D79D1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE506813-AA5B-4DF0-B389-1E839D79D1AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CCE1BBD-ED2A-419C-9B91-F62DA1A07D39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CCE1BBD-ED2A-419C-9B91-F62DA1A07D39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CCE1BBD-ED2A-419C-9B91-F62DA1A07D39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CCE1BBD-ED2A-419C-9B91-F62DA1A07D39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
