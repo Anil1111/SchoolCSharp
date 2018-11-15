@@ -70,7 +70,7 @@
             this.infoText1.TabIndex = 1;
             this.infoText1.Text = "Number of iterations:";
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -78,8 +78,8 @@
             this.Controls.Add(this.infoText1);
             this.Controls.Add(this.lblValue);
             this.Controls.Add(this.fieldIterations);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "Nepero Number";
             this.Load += new System.EventHandler(this.OnIterationsChanged);
             ((System.ComponentModel.ISupportInitialize)(this.fieldIterations)).EndInit();
             this.ResumeLayout(false);

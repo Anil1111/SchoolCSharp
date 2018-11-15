@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter.Interface", "Proj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar", "Projects\Calendar\Calendar.csproj", "{B7CE476D-D440-4534-8DD4-279561255FB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeperoNumber", "Projects\NeperoNumber\NeperoNumber.csproj", "{EE506813-AA5B-4DF0-B389-1E839D79D1AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{B7CE476D-D440-4534-8DD4-279561255FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7CE476D-D440-4534-8DD4-279561255FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7CE476D-D440-4534-8DD4-279561255FB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE506813-AA5B-4DF0-B389-1E839D79D1AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE506813-AA5B-4DF0-B389-1E839D79D1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE506813-AA5B-4DF0-B389-1E839D79D1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE506813-AA5B-4DF0-B389-1E839D79D1AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
