@@ -1,4 +1,6 @@
-﻿namespace Cassaforte
+﻿using System;
+
+namespace Cassaforte
 {
     partial class MainForm
     {
@@ -28,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtOutput = new System.Windows.Forms.TextBox();
+            this.txtInputOutput = new System.Windows.Forms.TextBox();
             this.btnNum7 = new System.Windows.Forms.Button();
             this.btnNum8 = new System.Windows.Forms.Button();
             this.btnNum9 = new System.Windows.Forms.Button();
@@ -38,21 +40,24 @@
             this.btnNum3 = new System.Windows.Forms.Button();
             this.btnNum2 = new System.Windows.Forms.Button();
             this.btnNum1 = new System.Windows.Forms.Button();
+            this.btnConfirmCombination = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // txtOutput
+            // txtInputOutput
             // 
-            this.txtOutput.Location = new System.Drawing.Point(12, 12);
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.ReadOnly = true;
-            this.txtOutput.Size = new System.Drawing.Size(195, 20);
-            this.txtOutput.TabIndex = 0;
-            this.txtOutput.TabStop = false;
-            this.txtOutput.Text = "Impostando la combinazione...";
-            this.txtOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtInputOutput.Location = new System.Drawing.Point(12, 12);
+            this.txtInputOutput.Name = "txtInputOutput";
+            this.txtInputOutput.Size = new System.Drawing.Size(195, 20);
+            this.txtInputOutput.TabIndex = 0;
+            this.txtInputOutput.TabStop = false;
+            this.txtInputOutput.Text = "Inserire la combinazione...";
+            this.txtInputOutput.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtInputOutput.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnTextboxSelected);
+            this.txtInputOutput.Validating += new System.ComponentModel.CancelEventHandler(this.OnValidatingTextbox);
             // 
             // btnNum7
             // 
+            this.btnNum7.Enabled = false;
             this.btnNum7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNum7.Location = new System.Drawing.Point(12, 38);
             this.btnNum7.Name = "btnNum7";
@@ -64,6 +69,7 @@
             // 
             // btnNum8
             // 
+            this.btnNum8.Enabled = false;
             this.btnNum8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNum8.Location = new System.Drawing.Point(79, 38);
             this.btnNum8.Name = "btnNum8";
@@ -75,6 +81,7 @@
             // 
             // btnNum9
             // 
+            this.btnNum9.Enabled = false;
             this.btnNum9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNum9.Location = new System.Drawing.Point(146, 38);
             this.btnNum9.Name = "btnNum9";
@@ -86,6 +93,7 @@
             // 
             // btnNum6
             // 
+            this.btnNum6.Enabled = false;
             this.btnNum6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNum6.Location = new System.Drawing.Point(146, 91);
             this.btnNum6.Name = "btnNum6";
@@ -97,6 +105,7 @@
             // 
             // btnNum5
             // 
+            this.btnNum5.Enabled = false;
             this.btnNum5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNum5.Location = new System.Drawing.Point(79, 91);
             this.btnNum5.Name = "btnNum5";
@@ -108,6 +117,7 @@
             // 
             // btnNum4
             // 
+            this.btnNum4.Enabled = false;
             this.btnNum4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNum4.Location = new System.Drawing.Point(12, 91);
             this.btnNum4.Name = "btnNum4";
@@ -119,6 +129,7 @@
             // 
             // btnNum3
             // 
+            this.btnNum3.Enabled = false;
             this.btnNum3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNum3.Location = new System.Drawing.Point(146, 144);
             this.btnNum3.Name = "btnNum3";
@@ -130,6 +141,7 @@
             // 
             // btnNum2
             // 
+            this.btnNum2.Enabled = false;
             this.btnNum2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNum2.Location = new System.Drawing.Point(79, 144);
             this.btnNum2.Name = "btnNum2";
@@ -141,6 +153,7 @@
             // 
             // btnNum1
             // 
+            this.btnNum1.Enabled = false;
             this.btnNum1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNum1.Location = new System.Drawing.Point(12, 144);
             this.btnNum1.Name = "btnNum1";
@@ -150,11 +163,22 @@
             this.btnNum1.UseVisualStyleBackColor = true;
             this.btnNum1.Click += new System.EventHandler(this.OnDigit);
             // 
+            // btnConfirmCombination
+            // 
+            this.btnConfirmCombination.Location = new System.Drawing.Point(213, 12);
+            this.btnConfirmCombination.Name = "btnConfirmCombination";
+            this.btnConfirmCombination.Size = new System.Drawing.Size(151, 20);
+            this.btnConfirmCombination.TabIndex = 11;
+            this.btnConfirmCombination.Text = "Imposta combinazione";
+            this.btnConfirmCombination.UseVisualStyleBackColor = true;
+            this.btnConfirmCombination.Click += new System.EventHandler(this.OnConfirmCombination);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(223, 205);
+            this.ClientSize = new System.Drawing.Size(373, 205);
+            this.Controls.Add(this.btnConfirmCombination);
             this.Controls.Add(this.btnNum3);
             this.Controls.Add(this.btnNum2);
             this.Controls.Add(this.btnNum1);
@@ -164,7 +188,7 @@
             this.Controls.Add(this.btnNum9);
             this.Controls.Add(this.btnNum8);
             this.Controls.Add(this.btnNum7);
-            this.Controls.Add(this.txtOutput);
+            this.Controls.Add(this.txtInputOutput);
             this.Name = "MainForm";
             this.Text = "Cassaforte";
             this.ResumeLayout(false);
@@ -174,7 +198,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtOutput;
+        private System.Windows.Forms.TextBox txtInputOutput;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnNum7;
         private System.Windows.Forms.Button btnNum8;
@@ -185,6 +209,7 @@
         private System.Windows.Forms.Button btnNum3;
         private System.Windows.Forms.Button btnNum2;
         private System.Windows.Forms.Button btnNum1;
+        private System.Windows.Forms.Button btnConfirmCombination;
     }
 }
 
