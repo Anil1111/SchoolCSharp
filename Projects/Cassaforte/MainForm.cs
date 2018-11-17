@@ -9,7 +9,6 @@ namespace Cassaforte
     {
         private const int DefaultMaxLength = 32767;
         private string _password = string.Empty;
-        private string _guess = string.Empty;
         private int _tries = 3;
         private int _index;
 
@@ -27,14 +26,12 @@ namespace Cassaforte
             if (_index < 5)
             {
                 txtInputOutput.UseSystemPasswordChar = true;
-                txtInputOutput.Text += ' '; // No need to append the real value, it would be displayed as * anyways
-
-                _guess += number;
+                txtInputOutput.Text += number;
                 _index++;
                 if (_index == 5)
                 {
                     txtInputOutput.UseSystemPasswordChar = false;
-                    if (string.Equals(_password, _guess, StringComparison.Ordinal))
+                    if (string.Equals(_password, txtInputOutput.Text, StringComparison.Ordinal))
                     {
                         txtInputOutput.Text = "Cassaforte aperta";
                         btnNum1.Enabled = false;
@@ -69,7 +66,7 @@ namespace Cassaforte
                         }
                     }
                     
-                    _guess = string.Empty;
+                    txtInputOutput.Text = string.Empty;
                     _index = 0;
                 }
             }
