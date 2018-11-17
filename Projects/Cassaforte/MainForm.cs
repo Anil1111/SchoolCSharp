@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Cassaforte
@@ -86,7 +87,7 @@ namespace Cassaforte
 
         private void OnValidatingTextbox(object sender, CancelEventArgs e)
         {
-            e.Cancel = txtInputOutput.TextLength < 5 || txtInputOutput.Text.Contains("0");
+            e.Cancel = txtInputOutput.TextLength < 5 || !Regex.IsMatch(txtInputOutput.Text, @"[1-9]{5}");
         }
 
         private void OnConfirmCombination(object sender, EventArgs e)
