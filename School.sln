@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar", "Projects\Calend
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeperoNumber", "Projects\NeperoNumber\NeperoNumber.csproj", "{EE506813-AA5B-4DF0-B389-1E839D79D1AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassaforte", "Cassaforte\Cassaforte.csproj", "{4CCE1BBD-ED2A-419C-9B91-F62DA1A07D39}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassaforte", "Projects\Cassaforte\Cassaforte.csproj", "{4CCE1BBD-ED2A-419C-9B91-F62DA1A07D39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
