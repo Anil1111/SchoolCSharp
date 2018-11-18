@@ -132,10 +132,13 @@ namespace Cassaforte
         /// <param name="e">Event arguments</param>
         private void OnValidatingTextbox(object sender, CancelEventArgs e)
         {
+            // Se la TextBox e' readonly non validare l'input (l'utente non ne ha controllo)
             if (txtInputOutput.ReadOnly)
                 return;
             
-            e.Cancel = txtInputOutput.TextLength < 5 || !Regex.IsMatch(txtInputOutput.Text, @"[1-9]{5}");
+            // Verifico che l'input sia valido
+            // Uso Regex anche se non ancora spiegate siccome e' una parte opzionale del programma
+            e.Cancel = txtInputOutput.TextLength < 5 || !Regex.IsMatch(txtInputOutput.Text, @"[1-9]{5}"); 
         }
 
         /// <summary>
