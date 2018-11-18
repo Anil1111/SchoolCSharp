@@ -66,7 +66,6 @@ namespace Cassaforte
                         }
                     }
                     
-                    txtInputOutput.Text = string.Empty;
                     _index = 0;
                 }
             }
@@ -85,6 +84,9 @@ namespace Cassaforte
 
         private void OnValidatingTextbox(object sender, CancelEventArgs e)
         {
+            if (txtInputOutput.ReadOnly)
+                return;
+            
             e.Cancel = txtInputOutput.TextLength < 5 || !Regex.IsMatch(txtInputOutput.Text, @"[1-9]{5}");
         }
 
