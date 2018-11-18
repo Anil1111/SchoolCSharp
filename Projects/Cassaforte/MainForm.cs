@@ -79,6 +79,7 @@ namespace Cassaforte
                 txtInputOutput.Text = string.Empty;
                 txtInputOutput.TextAlign = HorizontalAlignment.Left;
                 txtInputOutput.MaxLength = 5;
+                txtInputOutput.UseSystemPasswordChar = true;
             }
         }
 
@@ -95,6 +96,7 @@ namespace Cassaforte
             txtInputOutput.TextAlign = HorizontalAlignment.Center;
             txtInputOutput.MaxLength = DefaultMaxLength;
             txtInputOutput.Text = "Inserire la combinazione";
+            txtInputOutput.UseSystemPasswordChar = false;
 
             btnNum1.Enabled = true;
             btnNum2.Enabled = true;
