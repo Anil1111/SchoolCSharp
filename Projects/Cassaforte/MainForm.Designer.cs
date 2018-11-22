@@ -199,7 +199,6 @@ namespace Cassaforte
         #endregion
 
         private System.Windows.Forms.TextBox txtInputOutput;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnNum7;
         private System.Windows.Forms.Button btnNum8;
         private System.Windows.Forms.Button btnNum9;
