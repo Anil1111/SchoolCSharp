@@ -54,6 +54,7 @@ namespace Merende
                     MessageBox.Show("Troppi tentativi sbagliati. L'applicazione sara' ora terminata.", "Esito", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     OnAuthenticated(false);
                 }
+                
                 _password = string.Empty;
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Merende
@@ -20,50 +21,20 @@ namespace Merende
 
         private void OnSelectionChange(object sender, EventArgs e)
         {
-            var checkbox = (CheckBox) sender;
+            _price = 0;
 
-            switch (checkbox.Name)
-            {
-                case nameof(chkBrioche):
-                    if (checkbox.Checked)
-                        _price += BriochePrice;
-                    else
-                        _price -= BriochePrice;
-                    break;
-                
-                case nameof(chkCappuccino):
-                    if (checkbox.Checked)
-                        _price += CappuccinoPrice;
-                    else
-                        _price -= CappuccinoPrice;
-                    break;
-                
-                case nameof(chkCoffee):
-                    if (checkbox.Checked)
-                        _price += CoffeePrice;
-                    else
-                        _price -= CoffeePrice;
-                    break;
-                
-                case nameof(chkJuice):
-                    if (checkbox.Checked)
-                        _price += JuicePrice;
-                    else
-                        _price -= JuicePrice;
-                    break;
-                
-                case nameof(chkSaltyBrioche):
-                    if (checkbox.Checked)
-                        _price += SaltyBriochePrice;
-                    else
-                        _price -= SaltyBriochePrice;
-                    break;
-                
-                default:
-                    return;
-            }
+            if (chkBrioche.Checked)
+                _price += BriochePrice;
+            if (chkCappuccino.Checked)
+                _price += CappuccinoPrice;
+            if (chkCoffee.Checked)
+                _price += CoffeePrice;
+            if (chkJuice.Checked)
+                _price += JuicePrice;
+            if (chkSaltyBrioche.Checked)
+                _price += SaltyBriochePrice;
 
-            lblPrice.Text = _price.ToString("C2");
+            lblPrice.Text = _price.ToString("C");
         }
 
         private void OnSubmit(object sender, EventArgs e)
