@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace Merende
+﻿namespace Merende
 {
     partial class Authenticator
     {
@@ -31,15 +29,15 @@ namespace Merende
         private void InitializeComponent()
         {
             this.lblInfo = new System.Windows.Forms.Label();
-            this.btn7 = new System.Windows.Forms.Button();
-            this.btn8 = new System.Windows.Forms.Button();
-            this.btn9 = new System.Windows.Forms.Button();
-            this.btn6 = new System.Windows.Forms.Button();
-            this.btn4 = new System.Windows.Forms.Button();
-            this.btn5 = new System.Windows.Forms.Button();
             this.btn1 = new System.Windows.Forms.Button();
             this.btn2 = new System.Windows.Forms.Button();
             this.btn3 = new System.Windows.Forms.Button();
+            this.btn4 = new System.Windows.Forms.Button();
+            this.btn5 = new System.Windows.Forms.Button();
+            this.btn6 = new System.Windows.Forms.Button();
+            this.btn7 = new System.Windows.Forms.Button();
+            this.btn8 = new System.Windows.Forms.Button();
+            this.btn9 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblInfo
@@ -51,72 +49,6 @@ namespace Merende
             this.lblInfo.TabIndex = 0;
             this.lblInfo.Text = "Inserire la combinazione";
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // btn7
-            // 
-            this.btn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.btn7.Location = new System.Drawing.Point(51, 37);
-            this.btn7.Name = "btn7";
-            this.btn7.Size = new System.Drawing.Size(50, 50);
-            this.btn7.TabIndex = 1;
-            this.btn7.Text = "7";
-            this.btn7.UseVisualStyleBackColor = true;
-            this.btn7.Click += new System.EventHandler(this.OnNumpadClick);
-            // 
-            // btn8
-            // 
-            this.btn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.btn8.Location = new System.Drawing.Point(107, 37);
-            this.btn8.Name = "btn8";
-            this.btn8.Size = new System.Drawing.Size(50, 50);
-            this.btn8.TabIndex = 1;
-            this.btn8.Text = "8";
-            this.btn8.UseVisualStyleBackColor = true;
-            this.btn8.Click += new System.EventHandler(this.OnNumpadClick);
-            // 
-            // btn9
-            // 
-            this.btn9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.btn9.Location = new System.Drawing.Point(163, 37);
-            this.btn9.Name = "btn9";
-            this.btn9.Size = new System.Drawing.Size(50, 50);
-            this.btn9.TabIndex = 1;
-            this.btn9.Text = "9";
-            this.btn9.UseVisualStyleBackColor = true;
-            this.btn9.Click += new System.EventHandler(this.OnNumpadClick);
-            // 
-            // btn6
-            // 
-            this.btn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.btn6.Location = new System.Drawing.Point(163, 93);
-            this.btn6.Name = "btn6";
-            this.btn6.Size = new System.Drawing.Size(50, 50);
-            this.btn6.TabIndex = 1;
-            this.btn6.Text = "6";
-            this.btn6.UseVisualStyleBackColor = true;
-            this.btn6.Click += new System.EventHandler(this.OnNumpadClick);
-            // 
-            // btn4
-            // 
-            this.btn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.btn4.Location = new System.Drawing.Point(51, 93);
-            this.btn4.Name = "btn4";
-            this.btn4.Size = new System.Drawing.Size(50, 50);
-            this.btn4.TabIndex = 1;
-            this.btn4.Text = "4";
-            this.btn4.UseVisualStyleBackColor = true;
-            this.btn4.Click += new System.EventHandler(this.OnNumpadClick);
-            // 
-            // btn5
-            // 
-            this.btn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.btn5.Location = new System.Drawing.Point(107, 93);
-            this.btn5.Name = "btn5";
-            this.btn5.Size = new System.Drawing.Size(50, 50);
-            this.btn5.TabIndex = 1;
-            this.btn5.Text = "5";
-            this.btn5.UseVisualStyleBackColor = true;
-            this.btn5.Click += new System.EventHandler(this.OnNumpadClick);
             // 
             // btn1
             // 
@@ -151,21 +83,87 @@ namespace Merende
             this.btn3.UseVisualStyleBackColor = true;
             this.btn3.Click += new System.EventHandler(this.OnNumpadClick);
             // 
+            // btn5
+            // 
+            this.btn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.btn5.Location = new System.Drawing.Point(107, 93);
+            this.btn5.Name = "btn5";
+            this.btn5.Size = new System.Drawing.Size(50, 50);
+            this.btn5.TabIndex = 1;
+            this.btn5.Text = "5";
+            this.btn5.UseVisualStyleBackColor = true;
+            this.btn5.Click += new System.EventHandler(this.OnNumpadClick);
+            // 
+            // btn4
+            // 
+            this.btn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.btn4.Location = new System.Drawing.Point(51, 93);
+            this.btn4.Name = "btn4";
+            this.btn4.Size = new System.Drawing.Size(50, 50);
+            this.btn4.TabIndex = 1;
+            this.btn4.Text = "4";
+            this.btn4.UseVisualStyleBackColor = true;
+            this.btn4.Click += new System.EventHandler(this.OnNumpadClick);
+            // 
+            // btn6
+            // 
+            this.btn6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.btn6.Location = new System.Drawing.Point(163, 93);
+            this.btn6.Name = "btn6";
+            this.btn6.Size = new System.Drawing.Size(50, 50);
+            this.btn6.TabIndex = 1;
+            this.btn6.Text = "6";
+            this.btn6.UseVisualStyleBackColor = true;
+            this.btn6.Click += new System.EventHandler(this.OnNumpadClick);
+            // 
+            // btn7
+            // 
+            this.btn7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.btn7.Location = new System.Drawing.Point(51, 37);
+            this.btn7.Name = "btn7";
+            this.btn7.Size = new System.Drawing.Size(50, 50);
+            this.btn7.TabIndex = 1;
+            this.btn7.Text = "7";
+            this.btn7.UseVisualStyleBackColor = true;
+            this.btn7.Click += new System.EventHandler(this.OnNumpadClick);
+            // 
+            // btn8
+            // 
+            this.btn8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.btn8.Location = new System.Drawing.Point(107, 37);
+            this.btn8.Name = "btn8";
+            this.btn8.Size = new System.Drawing.Size(50, 50);
+            this.btn8.TabIndex = 1;
+            this.btn8.Text = "8";
+            this.btn8.UseVisualStyleBackColor = true;
+            this.btn8.Click += new System.EventHandler(this.OnNumpadClick);
+            // 
+            // btn9
+            // 
+            this.btn9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.btn9.Location = new System.Drawing.Point(163, 37);
+            this.btn9.Name = "btn9";
+            this.btn9.Size = new System.Drawing.Size(50, 50);
+            this.btn9.TabIndex = 1;
+            this.btn9.Text = "9";
+            this.btn9.UseVisualStyleBackColor = true;
+            this.btn9.Click += new System.EventHandler(this.OnNumpadClick);
+            // 
             // Authenticator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(269, 211);
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Controls.Add(this.btn3);
-            this.Controls.Add(this.btn6);
-            this.Controls.Add(this.btn9);
-            this.Controls.Add(this.btn2);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Controls.Add(this.btn1);
-            this.Controls.Add(this.btn5);
+            this.Controls.Add(this.btn2);
+            this.Controls.Add(this.btn3);
             this.Controls.Add(this.btn4);
-            this.Controls.Add(this.btn8);
+            this.Controls.Add(this.btn5);
+            this.Controls.Add(this.btn6);
             this.Controls.Add(this.btn7);
+            this.Controls.Add(this.btn8);
+            this.Controls.Add(this.btn9);
             this.Controls.Add(this.lblInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;

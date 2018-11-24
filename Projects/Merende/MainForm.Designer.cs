@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace Merende
+﻿namespace Merende
 {
     partial class MainForm
     {
@@ -31,24 +29,24 @@ namespace Merende
         private void InitializeComponent()
         {
             this.lblTitleInfoText = new System.Windows.Forms.Label();
-            this.imgCoffee = new System.Windows.Forms.Panel();
+            this.lblInfoText = new System.Windows.Forms.Label();
+            this.lblPrice = new System.Windows.Forms.Label();
             this.lblCoffeePrice = new System.Windows.Forms.Label();
-            this.imgBrioche = new System.Windows.Forms.Panel();
             this.lblBriochePrice = new System.Windows.Forms.Label();
-            this.imgSaltyBrioche = new System.Windows.Forms.Panel();
             this.lblSaltyBriochePrice = new System.Windows.Forms.Label();
-            this.chkSaltyBrioche = new System.Windows.Forms.CheckBox();
-            this.imgCappuccino = new System.Windows.Forms.Panel();
             this.lblCappuccinoPrice = new System.Windows.Forms.Label();
-            this.imgJuice = new System.Windows.Forms.Panel();
             this.lblJuicePrice = new System.Windows.Forms.Label();
-            this.groupPanel = new System.Windows.Forms.Panel();
+            this.imgCoffee = new System.Windows.Forms.Panel();
+            this.imgBrioche = new System.Windows.Forms.Panel();
+            this.imgSaltyBrioche = new System.Windows.Forms.Panel();
+            this.imgCappuccino = new System.Windows.Forms.Panel();
+            this.imgJuice = new System.Windows.Forms.Panel();
             this.chkBrioche = new System.Windows.Forms.CheckBox();
             this.chkCappuccino = new System.Windows.Forms.CheckBox();
             this.chkCoffee = new System.Windows.Forms.CheckBox();
             this.chkJuice = new System.Windows.Forms.CheckBox();
-            this.lblInfoText = new System.Windows.Forms.Label();
-            this.lblPrice = new System.Windows.Forms.Label();
+            this.chkSaltyBrioche = new System.Windows.Forms.CheckBox();
+            this.groupPanel = new System.Windows.Forms.Panel();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.imgCoffee.SuspendLayout();
             this.imgBrioche.SuspendLayout();
@@ -266,7 +264,7 @@ namespace Merende
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.StartPosition = FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ClientSize = new System.Drawing.Size(304, 461);
             this.Controls.Add(this.lblTitleInfoText);
             this.Controls.Add(this.lblPrice);
