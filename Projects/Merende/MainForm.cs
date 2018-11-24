@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Merende
@@ -34,29 +34,38 @@ namespace Merende
             if (chkSaltyBrioche.Checked)
                 _price += SaltyBriochePrice;
 
-            lblPrice.Text = _price.ToString("C");
+            lblPrice.Text = _price.ToString("C2");
         }
 
         private void OnSubmit(object sender, EventArgs e)
         {
             const string title = "Colazione Scelta";
 
-            string message = "Hai scelto:\n"; // I want to use StringBuilder .-.
-            if (chkCoffee.Checked)
-                message += $" • Caffè: {CoffeePrice:C2}\n";
-            if (chkCappuccino.Checked)
-                message += $" • Cappuccino: {CappuccinoPrice:C2}\n";
-            if (chkBrioche.Checked)
-                message += $" • Brioche: {BriochePrice:C2}\n";
-            if (chkSaltyBrioche.Checked)
-                message += $" • Brioche salata: {SaltyBriochePrice:C2}\n";
-            if (chkJuice.Checked)
-                message += $" • Spremuta: {JuicePrice:C2}\n";
-            message += '\n';
-            message += $"Totale: {_price:C2}";
+            StringBuilder message = new StringBuilder();
+            if (_price > 0)
+            {
+                message.AppendLine("Hai scelto:");
+                if (chkCoffee.Checked)
+                    message.AppendFormat(" • Caffè: {0:C2}\n",
+                        CoffeePrice); // Should use Environment.NewLine but in the end it's the same
+                if (chkCappuccino.Checked)
+                    message.AppendFormat(" • Cappuccino: {0:C2}\n", CappuccinoPrice);
+                if (chkBrioche.Checked)
+                    message.AppendFormat(" • Brioche: {0:C2}\n", BriochePrice);
+                if (chkSaltyBrioche.Checked)
+                    message.AppendFormat(" • Brioche salata: {0:C2}\n", SaltyBriochePrice);
+                if (chkJuice.Checked)
+                    message.AppendFormat(" • Spremuta: {0:C2}\n", JuicePrice);
+            }
+            else
+            {
+                message.AppendLine("Non hai scelto nessun prodotto.");
+            }
+
+            message.AppendFormat("\nTotale: {0:C2}", _price);
             
-            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Close();
+            groupPanel.Enabled = false;
+            MessageBox.Show(message.ToString(), title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
