@@ -1,4 +1,6 @@
-﻿namespace Merende
+﻿using System.Windows.Forms;
+
+namespace Merende
 {
     partial class MainForm
     {
@@ -264,6 +266,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.ClientSize = new System.Drawing.Size(304, 461);
             this.Controls.Add(this.lblTitleInfoText);
             this.Controls.Add(this.lblPrice);
