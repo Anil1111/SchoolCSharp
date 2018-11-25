@@ -6,14 +6,9 @@ namespace Merende
     public class Merende : ApplicationContext
     {
         /// <summary>
-        /// The <see cref="Authenticator"/> instance
-        /// </summary>
-        private readonly Authenticator _auth;
-
-        /// <summary>
         /// Number of <see cref="Form"/>s visible
         /// </summary>
-        private static int _formsCount = 0;
+        private static int _formsCount;
         
         /// <summary>
         /// Called on program start
@@ -25,12 +20,12 @@ namespace Merende
             _formsCount++;
             
             // Create the Authenticator form
-            _auth = new Authenticator();
+            var auth = new Authenticator();
             // Bind events
-            _auth.Authenticated += OnAuthenticated;
-            _auth.Closed += OnExit;
+            auth.Authenticated += OnAuthenticated;
+            auth.Closed += OnExit;
             // Show the form
-            _auth.Show();
+            auth.Show();
         }
 
         /// <summary>
@@ -38,7 +33,7 @@ namespace Merende
         /// </summary>
         /// <param name="sender">The <see cref="Authenticator"/> form</param>
         /// <param name="e">The event args</param>
-        private void OnAuthenticated(object sender, AuthEventArgs e)
+        private static void OnAuthenticated(object sender, AuthEventArgs e)
         {
             if (!e.Successful)
             {
@@ -54,7 +49,7 @@ namespace Merende
             _formsCount++;
             
             // Close the authentication form
-            _auth.Close();
+            ((Form) sender).Close();
             
             // Create the main form and show it
             MainForm form = new MainForm();
