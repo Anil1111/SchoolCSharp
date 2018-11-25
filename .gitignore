@@ -3,8 +3,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-# Custom
-CommandTest.cs
+# Prevent images copyright infringement
+*.jpg
+*.png
+*.jpeg
+*.bmp
+*.gif
 
 # User-specific files
 *.suo
