@@ -9,6 +9,11 @@ namespace Merende
         /// The <see cref="Authenticator"/> instance
         /// </summary>
         private readonly Authenticator _auth;
+
+        /// <summary>
+        /// Number of <see cref="Form"/>s visible
+        /// </summary>
+        private static int _formsCount = 0;
         
         /// <summary>
         /// Called on program start
@@ -16,6 +21,9 @@ namespace Merende
         /// <inheritdoc />
         public Merende()
         {
+            // We are showing the Authenticator Form
+            _formsCount++;
+            
             // Create the Authenticator form
             _auth = new Authenticator();
             // Bind events
@@ -36,8 +44,10 @@ namespace Merende
             if (!e.Successful)
                 Environment.Exit(-1);
 
-            // Unbind the closed event and close the authentication form
-            _auth.Closed -= OnExit;
+            // We are showing the MainForm form
+            _formsCount++;
+            
+            // Close the authentication form
             _auth.Close();
             
             // Create the main form and show it
@@ -53,6 +63,10 @@ namespace Merende
         /// <param name="e">The event args</param>
         private static void OnExit(object sender, EventArgs e)
         {
+            // Don't close the application if we have forms visible
+            if (--_formsCount > 0)
+                return;
+            
             // Kills the current thread and closes the application
             Application.Exit();
         }
