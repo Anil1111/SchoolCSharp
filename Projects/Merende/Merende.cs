@@ -40,9 +40,15 @@ namespace Merende
         /// <param name="e">The event args</param>
         private void OnAuthenticated(object sender, AuthEventArgs e)
         {
-            // If we failed authentication just kill the application
             if (!e.Successful)
-                Environment.Exit(-1);
+            {
+                // If we failed the authentication
+                // Close the application
+                Application.Exit();
+                // Application.Exit is not instant, the form would created and then disposed
+                // We prevent that returning here
+                return; 
+            }
 
             // We are showing the MainForm form
             _formsCount++;
