@@ -64,7 +64,7 @@ namespace Merende
         /// <param name="e">The event args</param>
         private static void OnExit(object sender, EventArgs e)
         {
-            // Don't close the application if we have forms visible
+            // Don't close the application if we any form is visible
             if (--_formsCount > 0)
                 return;
             
