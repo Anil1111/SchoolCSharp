@@ -26,6 +26,8 @@ namespace WordSplitter
             
             // Creates a variable that will hold the current word we are currently in
             string word = string.Empty; // Would have used StringBuilder
+            // Counts the number of words in the list
+            int counter = 0; 
             // Cycles though every character in the text
             for (int i = 0; i < text.Length; i++)
             {
@@ -39,7 +41,7 @@ namespace WordSplitter
                     word += c;
                     
                     // We add the word to the list
-                    lsbWords.Items.Add($"{lsbWords.Items.Count + 1}) {word}");
+                    lsbWords.Items.Add($"{++counter}) {word}");
                 }
                 // If it's just a letter add the letter to word
                 else if (char.IsLetter(c))
@@ -51,8 +53,8 @@ namespace WordSplitter
                 else if (word.Length > 0)
                 {
                     // We add the word to the list
-                    lsbWords.Items.Add($"{lsbWords.Items.Count + 1}) {word}");
-                    // We start another word
+                    lsbWords.Items.Add($"{++counter}) {word}");
+                    // We setup the variable for the next word
                     word = string.Empty;
                 }
             }
