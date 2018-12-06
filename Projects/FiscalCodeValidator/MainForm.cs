@@ -118,14 +118,14 @@ namespace FiscalCodeValidator
                 }
             }
 
-
             var year = int.Parse(str.ToString(6, 2));
             if (year > DateTime.Now.Year - 2000)
                 year += 1000;
             else 
                 year += 2000;
             
-            var month = FiscalCode.MonthToNumber(str[8]);
+            var month = MonthToNumber(str[8]);
+            
             var day = int.Parse(str.ToString(9, 2));
             var sex = Sex.Male;
             if (day >= 40)
