@@ -37,7 +37,9 @@
             // 
             // txtFiscalCode
             // 
+            this.txtFiscalCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtFiscalCode.Location = new System.Drawing.Point(12, 12);
+            this.txtFiscalCode.MaxLength = 16;
             this.txtFiscalCode.Name = "txtFiscalCode";
             this.txtFiscalCode.Size = new System.Drawing.Size(233, 20);
             this.txtFiscalCode.TabIndex = 0;
@@ -89,7 +91,10 @@
             this.Controls.Add(this.lblSex);
             this.Controls.Add(this.btnCompute);
             this.Controls.Add(this.txtFiscalCode);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.ShowIcon = false;
             this.Text = "Fiscal Code Validator";
             this.ResumeLayout(false);
             this.PerformLayout();
