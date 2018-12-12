@@ -49,14 +49,14 @@ namespace FiscalCodeValidator
         private readonly string _code;
         
         /// <summary>
-        /// The letters 1-3 of the fiscal code
-        /// </summary>
-        private readonly string _surname;
-        
-        /// <summary>
         /// The letters 4-6 of the fiscal code 
         /// </summary>
         private readonly string _name;
+        
+        /// <summary>
+        /// The letters 1-3 of the fiscal code
+        /// </summary>
+        private readonly string _surname;
         
         /// <summary>
         /// The date of birth of the subject
