@@ -39,7 +39,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordSplitter", "Projects\Wo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiscalCodeValidator", "Projects\FiscalCodeValidator\FiscalCodeValidator.csproj", "{F4C28929-775D-4B95-87C1-D85B736CDB39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductLister", "Project\ProductLister\ProductLister.csproj", "{1C5468C0-6C46-4441-B171-731E8422B4CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductLister", "Projects\ProductLister\ProductLister.csproj", "{1C5468C0-6C46-4441-B171-731E8422B4CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
