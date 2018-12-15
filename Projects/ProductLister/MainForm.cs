@@ -36,13 +36,13 @@ namespace ProductLister
             {
                 // Add 1 to the array size and shift right all values index by 1
                 var array = _products; // Keeps a reference to the current array
-                _products = new Product[array.Length + 1]; // Replaces the old reference with a new array of the desired length
-                Array.Copy(array, 0, _products, 1, array.Length); // Copies the first array content to the new array
+                _products = new Product[array.Length + 1]; // Makes the _product variable point to a new array of increased length
+                Array.Copy(array, 0, _products, 1, array.Length); // Copies the former array content to the new one
 
                 // Add (Insert) the product in the array
                 _products[0] = product;
 
-                // We add the entry to the current selection without re-computing the filter does match
+                // We add the entry to the current selection without re-computing UpdateSelectionView
                 if (product.IsMatch(_filterType, _filterMachine))
                 {
                     lstProducts.Items.Add($"{++_filterCount}) {product}");
