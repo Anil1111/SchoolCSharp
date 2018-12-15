@@ -9,9 +9,10 @@ namespace ProductLister
 {
     public partial class MainForm : Form
     {
-        private readonly List<Product> _products = new List<Product>();
+        private Product[] _products = new Product[0];
 
-        private Type _filterType = Type.All;
+        private int _filterCount;
+        private Type _filterType;
         private int _filterMachine;
         
         public MainForm()
@@ -19,56 +20,93 @@ namespace ProductLister
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Adds a product to the <see cref="_products"/> array
+        /// </summary>
+        /// <param name="sender">The <see cref="btnAdd"/> instance</param>
+        /// <param name="e">The event args</param>
         private void OnAdd(object sender, EventArgs e)
         {
+            // Gets the text from the TextBox
             var text = txtProductCode.Text;
-            if (text.Length < 2)
+            if (text.Length < 2) // This check is also performed by TryParse but doing it here is not wrong.
                 return;
 
             if (Product.TryParse(text, out Product product))
-                _products.Add(product);
-            
-            UpdateListview();
+            {
+                // Add 1 to the array size and shift right all values index by 1
+                var array = _products; // Keeps a reference to the current array
+                _products = new Product[array.Length + 1]; // Replaces the old reference with a new array of the desired length
+                Array.Copy(array, 0, _products, 1, array.Length); // Copies the first array content to the new array
+
+                // Add (Insert) the product in the array
+                _products[0] = product;
+
+                // We add the entry to the current selection without re-computing the filter does match
+                if (product.IsMatch(_filterType, _filterMachine))
+                {
+                    lstProducts.Items.Add($"{++_filterCount}) {product}");
+                    txtTotal.Text = _filterCount.ToString(CultureInfo.InvariantCulture);
+                }
+            }
         }
         
+        /// <summary>
+        /// Empties the array <see cref="_products"/> and the ListBox <see cref="lstProducts"/>
+        /// </summary>
+        /// <param name="sender">The <see cref="btnEmpty"/> instance</param>
+        /// <param name="e">The event args</param>
         private void OnEmpty(object sender, EventArgs e)
         {
-            _products.Clear();
+            // Empty all variables
+            _products = new Product[0];
+            _filterCount = 0;
+            txtTotal.Text = "0";
+            
+            // Empty the ListBox
             lstProducts.Items.Clear();
         }
 
-        private void OnMachineFilterChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Called when a filter is changed
+        /// </summary>
+        /// <param name="sender">The <see cref="Control"/> whose state was changed</param>
+        /// <param name="e">The event args</param>
+        private void OnFilterChanged(object sender, EventArgs e)
         {
+            // Gets the machine number filter
             _filterMachine = (int) filterMachineNum.Value;
-            UpdateListview();
-        }
-
-        private void OnTypeFilterChanged(object sender, EventArgs e)
-        {
+            
+            // Gets the product type filter
+            _filterType = Type.None;
             if (filterTypeC.Checked)
                 _filterType = Type.Compliant;
             else if (filterTypeR.Checked)
                 _filterType = Type.Revision;
             else if (filterTypeS.Checked)
                 _filterType = Type.Waste;
-            else
-                _filterType = Type.All;
-            UpdateListview();
+            
+            // Updates the view
+            UpdateSelectionView();
         }
 
-        private void UpdateListview()
+        /// <summary>
+        /// Updates the ListBox with only the Products that matches the filter
+        /// </summary>
+        /// <remarks>O(N) algorithm, where N is the length of the array <see cref="_products"/></remarks>
+        private void UpdateSelectionView()
         {
+            // Clears the list
             lstProducts.Items.Clear();
             
-            lstProducts.Items.AddRange(_products
-                .Where(x => 
-                    (x.Machine == _filterMachine || _filterMachine == 0) &&
-                    (x.Type & _filterType) != 0)
-                .Cast<object>()
-                .ToArray()
-            );
+            // Fills the list
+            _filterCount = 0;
+            foreach (var product in _products)
+                if (product.IsMatch(_filterType, _filterMachine))
+                    lstProducts.Items.Add($"{++_filterCount}) {product}");
 
-            txtTotal.Text = lstProducts.Items.Count.ToString(CultureInfo.InvariantCulture);
+            // Updates the total label
+            txtTotal.Text = _filterCount.ToString(CultureInfo.InvariantCulture);
         }
     }
 
@@ -77,15 +115,33 @@ namespace ProductLister
         public Type Type { get; }
         public int Machine { get; }
 
-        private Product(Type type, int machine)
+        public Product(Type type, int machine)
         {
             Type = type;
             Machine = machine;
         }
 
+        /// <summary>
+        /// Verifies whether the product properties matches <paramref name="type"/> and <paramref name="machine"/>
+        /// </summary>
+        /// <param name="type">The product type to compare to or 0 for no-check</param>
+        /// <param name="machine">The machine id to compare to or 0 for no-check</param>
+        /// <returns>True, when the product matches the requisites, False otherwise</returns>
+        public bool IsMatch(Type type, int machine)
+        {
+            return (type == Type.None || Type == type) && 
+                   (machine == 0 || Machine == machine);
+        }
+
+        /// <summary>
+        /// Converts the instance to the string representation
+        /// </summary>
+        /// <returns>The string representation of this Product</returns>
+        /// <exception cref="ArgumentOutOfRangeException">The product has an invalid product type</exception>
         public override string ToString()
         {
             StringBuilder str = new StringBuilder(2);
+            // Convert the product type to string
             switch (Type)
             {
                 case Type.Compliant:
@@ -98,21 +154,31 @@ namespace ProductLister
                     str.Append('R');
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(Type), "Il tipo del prodotto e' inesistente");
+                    throw new ArgumentOutOfRangeException(nameof(Type), $"Il tipo di prodotto {Type} non e' previsto.");
             }
-            str.Append(Machine.ToString(CultureInfo.InvariantCulture));
-            return str.ToString();
+            // As we know Machine is [1-9] we can convert the integer to char manually to reduce the performance hit
+            str.Append((char) ('0' + Machine));
+            return str.ToString(); // Return the string content of the StringBuilder
         }
 
+        /// <summary>
+        /// Tries to parse the input string to a <see cref="Product"/> instance
+        /// </summary>
+        /// <param name="str">The string to parse</param>
+        /// <param name="product">The output product</param>
+        /// <returns>True if the method succeeded, False otherwise</returns>
         public static bool TryParse(string str, out Product product)
         {
+            // Make product the default of Product, this allows us to return false
             product = default(Product);
             
+            // Check for correct string length
             if (str.Length < 2)
                 return false;
 
+            // Tries to parse the product type from the string
             Type type;
-            switch (char.ToUpperInvariant(str[0]))
+            switch (char.ToUpperInvariant(str[0])) // We use ToUpper instead of ToLower because of Microsoft conventions
             {
                 case 'R':
                     type = Type.Revision;
@@ -126,25 +192,30 @@ namespace ProductLister
                     type = Type.Waste;
                     break;
                 
+                // If we cannot parse the type, exit the method
                 default:
                     return false;
             }
 
+            // Parse the machine number
             int machineNumber = str[1] - '0';
-            if (machineNumber < 1 || machineNumber > 9)
+            if (machineNumber < 1 || machineNumber > 9) // If the number is not in range, exit the method
                 return false;
             
+            // Create the Product instance and return true
             product = new Product(type, machineNumber);
             return true;
         }
     }
 
-    [Flags]
+    /// <summary>
+    /// The <see cref="Product"/> type
+    /// </summary>
     public enum Type
     {
-        All = 7,
-        Compliant = 1,
-        Waste = 2,
-        Revision = 4,
+        None,
+        Compliant,
+        Waste,
+        Revision,
     }
 }
