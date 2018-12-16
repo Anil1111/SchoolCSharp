@@ -19,6 +19,16 @@ namespace ProductLister
         }
 
         /// <summary>
+        /// Called everytime the content of <see cref="txtProductCode"/> gets changed
+        /// </summary>
+        /// <param name="sender">The <see cref="txtProductCode"/> instance</param>
+        /// <param name="e">The event args</param>
+        private void OnValidate(object sender, EventArgs e)
+        {
+            btnAdd.Enabled = txtProductCode.TextLength == 2;
+        }
+
+        /// <summary>
         /// Adds a product to the <see cref="_products"/> array
         /// </summary>
         /// <param name="sender">The <see cref="btnAdd"/> instance</param>
@@ -27,25 +37,26 @@ namespace ProductLister
         {
             // Gets the text from the TextBox
             var text = txtProductCode.Text;
-            if (text.Length < 2) // This check is also performed by TryParse but doing it here is not wrong.
-                return;
 
-            if (Product.TryParse(text, out Product product))
+            if (!Product.TryParse(text, out Product product))
             {
-                // Add 1 to the array size and shift right all values index by 1
-                var array = _products; // Keeps a reference to the current array
-                _products = new Product[array.Length + 1]; // Makes the _product variable point to a new array of increased length
-                Array.Copy(array, 0, _products, 1, array.Length); // Copies the former array content to the new one
+                MessageBox.Show("Impossibile convertire il codice in un Prodotto!", "Input Error");
+                return;
+            }
+            
+            // Add 1 to the array size and shift right all values index by 1
+            var array = _products; // Keeps a reference to the current array
+            _products = new Product[array.Length + 1]; // Makes the _product variable point to a new array of increased length
+            Array.Copy(array, 0, _products, 1, array.Length); // Copies the former array content to the new one
 
-                // Add (Insert) the product in the array
-                _products[0] = product;
+            // Add (Insert) the product in the array
+            _products[0] = product;
 
-                // We add the entry to the current selection without re-computing UpdateSelectionView
-                if (product.IsMatch(_filterType, _filterMachine))
-                {
-                    lstProducts.Items.Add($"{++_filterCount}) {product}");
-                    txtTotal.Text = _filterCount.ToString(CultureInfo.InvariantCulture);
-                }
+            // We add the entry to the current selection without re-computing UpdateSelectionView
+            if (product.IsMatch(_filterType, _filterMachine))
+            {
+                lstProducts.Items.Add($"{++_filterCount}) {product}");
+                txtTotal.Text = _filterCount.ToString(CultureInfo.InvariantCulture);
             }
         }
         

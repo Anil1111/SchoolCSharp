@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace ProductLister
+﻿namespace ProductLister
 {
     partial class MainForm
     {
@@ -50,10 +48,11 @@ namespace ProductLister
             // 
             this.txtProductCode.Location = new System.Drawing.Point(99, 9);
             this.txtProductCode.Name = "txtProductCode";
-            this.txtProductCode.CharacterCasing = CharacterCasing.Upper;
+            this.txtProductCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtProductCode.Size = new System.Drawing.Size(57, 20);
             this.txtProductCode.MaxLength = 2;
             this.txtProductCode.TabIndex = 0;
+            this.txtProductCode.TextChanged += new System.EventHandler(this.OnValidate);
             // 
             // txtTotal
             // 
@@ -71,6 +70,7 @@ namespace ProductLister
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "INSERISCI";
+            this.btnAdd.Enabled = false;
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.OnAdd);
             // 
