@@ -45,10 +45,12 @@ namespace Bingo
                 var insertIndex = BinarySearch(_extractedNumbers, number);
                 if (insertIndex < 0)
                     _extractedNumbers.Insert(~insertIndex, number);
+                lstNumbers.ClearSelected(); // Fixes list random scrolling
                 return;
             }
             
             _extractedNumbers.Insert(0, number);
+            lstNumbers.ClearSelected(); // Fixes list random scrolling
         }
 
         private void OnSortChanged(object sender, EventArgs e)
