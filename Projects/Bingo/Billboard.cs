@@ -144,19 +144,5 @@ namespace Bingo
                 }
             }
         }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public CellState[] Cells
-        {
-            get => _cells;
-            set
-            {
-                if (!ReferenceEquals(_cells, value))
-                {
-                    _cells = value;
-                    Invalidate();
-                }
-            }
-        }
     }
 }
