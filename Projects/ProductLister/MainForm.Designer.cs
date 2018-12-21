@@ -108,7 +108,7 @@
             this.filterTypeAll.TabStop = true;
             this.filterTypeAll.Text = "Tutti";
             this.filterTypeAll.UseVisualStyleBackColor = true;
-            this.filterTypeAll.Click += new System.EventHandler(this.OnFilterChanged);
+            this.filterTypeAll.CheckedChanged += new System.EventHandler(this.OnFilterChanged);
             // 
             // filterTypeS
             // 
@@ -119,7 +119,7 @@
             this.filterTypeS.TabIndex = 6;
             this.filterTypeS.Text = "Scarto";
             this.filterTypeS.UseVisualStyleBackColor = true;
-            this.filterTypeS.Click += new System.EventHandler(this.OnFilterChanged);
+            this.filterTypeS.CheckedChanged += new System.EventHandler(this.OnFilterChanged);
             // 
             // filterTypeR
             // 
@@ -130,7 +130,7 @@
             this.filterTypeR.TabIndex = 7;
             this.filterTypeR.Text = "Revisione";
             this.filterTypeR.UseVisualStyleBackColor = true;
-            this.filterTypeR.Click += new System.EventHandler(this.OnFilterChanged);
+            this.filterTypeR.CheckedChanged += new System.EventHandler(this.OnFilterChanged);
             // 
             // filterTypeC
             // 
@@ -141,7 +141,7 @@
             this.filterTypeC.TabIndex = 8;
             this.filterTypeC.Text = "Conforme";
             this.filterTypeC.UseVisualStyleBackColor = true;
-            this.filterTypeC.Click += new System.EventHandler(this.OnFilterChanged);
+            this.filterTypeC.CheckedChanged += new System.EventHandler(this.OnFilterChanged);
             // 
             // lblInfoText1
             // 

@@ -83,6 +83,10 @@ namespace ProductLister
         /// <param name="e">The event args</param>
         private void OnFilterChanged(object sender, EventArgs e)
         {
+            // Prevents method for being called twice at a time (when one radio button turns checked, the former checked one turns unchecked)
+            if (sender is RadioButton radio && !radio.Checked)
+                return;
+            
             // Gets the machine number filter
             _filterMachine = (int) filterMachineNum.Value;
             
