@@ -40,21 +40,26 @@ namespace Bingo
 
         private void ListNumber(int number)
         {
+            var position = lstNumbers.TopIndex;
+            
             if (_sort)
             {
-                var insertIndex = BinarySearch(_extractedNumbers, number);
-                if (insertIndex < 0)
-                    _extractedNumbers.Insert(~insertIndex, number);
+                var insertIndex = ~BinarySearch(_extractedNumbers, number);
+                _extractedNumbers.Insert(insertIndex, number);
+                if (insertIndex < position)
+                    position += 1;
                 
                 // Fixes list random scrolling
-                lstNumbers.TopIndex = 0;
+                lstNumbers.TopIndex = position;
                 return;
             }
             
             _extractedNumbers.Insert(0, number);
+            if (position > 0)
+                position += 1;
             
             // Fixes list random scrolling
-            lstNumbers.TopIndex = 0;
+            lstNumbers.TopIndex = position;
         }
 
         private void OnSortChanged(object sender, EventArgs e)
