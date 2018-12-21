@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Bingo
 {
     public partial class MainForm : Form
     {
-        private readonly int[] _extractedNumbers = new int[90];
-        private int _extractedCount;
-        
+        private readonly BindingList<int> _extractedNumbers = new BindingList<int>();
         private readonly Randomizer _randomizer;
         private int _lastNumber = -1;
         private bool _sort;
@@ -21,6 +17,7 @@ namespace Bingo
         {
             InitializeComponent();
             _randomizer = new Randomizer(1, 90);
+            lstNumbers.DataSource = _extractedNumbers;
         }
 
         private void OnExtract(object sender, EventArgs e)
@@ -43,47 +40,46 @@ namespace Bingo
 
         private void ListNumber(int number)
         {
-            _extractedNumbers[_extractedCount++] = number;
-            lstNumbers.Items.Insert(0, $"{_extractedCount:00} - {number,15}");
+            if (_sort)
+            {
+                var insertIndex = BinarySearch(_extractedNumbers, number);
+                if (insertIndex < 0)
+                    _extractedNumbers.Insert(~insertIndex, number);
+                return;
+            }
+            
+            _extractedNumbers.Insert(0, number);
         }
 
         private void OnSortChanged(object sender, EventArgs e)
         {
             _sort = !_sort;
-            QuickSort(_extractedNumbers, 0, _extractedCount - 1, 45);
             
-            lstNumbers.Items.Clear();
-            for (int i = 0; i < _extractedCount; i++)
-                lstNumbers.Items.Add(_extractedNumbers[i]);
+            if (_sort)
+                QuickSort(_extractedNumbers, 0, _extractedNumbers.Count - 1, 45);
         }
 
-        private static int BinarySearch(IList<int> array, int key)
+        private static int BinarySearch(IReadOnlyList<int> array, int value)
         {
             int left = 0;
             int right = array.Count - 1;
-            while (left < right)
+            while (left <= right)
             {
-                int index = left + (right - left) / 2;
-                var middle = array[index];
-
-                switch (middle.CompareTo(key))
-                {
-                    case 0: // index == key
-                        return -1;
-
-                    case 1: // index > key
-                        right = index - 1;
-                        continue;
-
-                    case -1: // index < key
-                        left = index + 1;
-                        continue;
-                }
+                int median = left + (right - left >> 1);
+                
+                var cmp = array[median].CompareTo(value);
+                if (cmp == 0)
+                    return median;
+                if (cmp < 0)
+                    left = median + 1;
+                else
+                    right = median - 1;
             }
-            return left;
+
+            return ~left;
         }
-        
-        private static void QuickSort(int[] array, int leftIndex, int rightIndex, int pivot)
+
+        private static void QuickSort(IList<int> array, int leftIndex, int rightIndex, int pivot)
         {
             if (leftIndex > rightIndex) return;
 
@@ -109,12 +105,12 @@ namespace Bingo
             }
 
             if (leftIndex < right)
-                QuickSort(array, leftIndex, right, array[leftIndex + (right      - leftIndex)]);
+                QuickSort(array, leftIndex, right, array[leftIndex + (right - leftIndex >> 1)]);
             if (left < rightIndex)
-                QuickSort(array, left, rightIndex, array[left      + (rightIndex - left     )]);
+                QuickSort(array, left, rightIndex, array[left + (rightIndex - left >> 1)]);
         }
 
-        private static void Swap(IList array, int first, int second)
+        private static void Swap(IList<int> array, int first, int second)
         {
             var tmp = array[first];
             array[first] = array[second];
