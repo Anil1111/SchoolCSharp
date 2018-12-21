@@ -76,15 +76,16 @@
             // 
             // lstNumbers
             // 
+            this.lstNumbers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lstNumbers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lstNumbers.FormattingEnabled = true;
             this.lstNumbers.ItemHeight = 16;
             this.lstNumbers.Location = new System.Drawing.Point(12, 123);
             this.lstNumbers.Name = "lstNumbers";
             this.lstNumbers.ScrollAlwaysVisible = true;
             this.lstNumbers.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.lstNumbers.Size = new System.Drawing.Size(102, 212);
+            this.lstNumbers.Size = new System.Drawing.Size(102, 210);
             this.lstNumbers.TabIndex = 4;
+            this.lstNumbers.UseTabStops = false;
             // 
             // chkSort
             // 
@@ -192,6 +193,7 @@
         Bingo.CellState.Free};
             this.billboard.CellSize = 30;
             this.billboard.CellSpacing = 10;
+            this.billboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.billboard.ForeColor = System.Drawing.Color.White;
             this.billboard.Free = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
             this.billboard.LastShown = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(196)))), ((int)(((byte)(15)))));
@@ -204,7 +206,8 @@
             // 
             // MainForm
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(596, 415);
             this.Controls.Add(this.chkSort);
             this.Controls.Add(this.lstNumbers);
@@ -212,9 +215,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExtract);
             this.Controls.Add(this.billboard);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Bingo";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,8 +232,8 @@
         private System.Windows.Forms.Button btnExtract;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox txtLastExtracted;
-        private System.Windows.Forms.ListBox lstNumbers;
         private System.Windows.Forms.CheckBox chkSort;
+        private System.Windows.Forms.ListBox lstNumbers;
     }
 }
 
