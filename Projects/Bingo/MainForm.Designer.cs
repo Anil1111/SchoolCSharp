@@ -92,7 +92,7 @@
             this.chkSort.AutoSize = true;
             this.chkSort.Location = new System.Drawing.Point(12, 339);
             this.chkSort.Name = "chkSort";
-            this.chkSort.Size = new System.Drawing.Size(51, 20);
+            this.chkSort.Size = new System.Drawing.Size(45, 17);
             this.chkSort.TabIndex = 5;
             this.chkSort.Text = "Sort";
             this.chkSort.UseVisualStyleBackColor = true;
@@ -112,6 +112,7 @@
             this.billboard.Size = new System.Drawing.Size(410, 391);
             this.billboard.TabIndex = 0;
             this.billboard.TabStop = false;
+            this.billboard.Extracted += new System.EventHandler<Bingo.ExtractedEventArgs>(this.OnExtracted);
             // 
             // MainForm
             // 
