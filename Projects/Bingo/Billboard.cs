@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,7 +7,7 @@ namespace Bingo
 {
     public partial class Billboard : Control
     {
-        private CellState[] _cells = new CellState[90];
+        private readonly CellState[] _cells = new CellState[90];
 
         private int _cellSize    = 25;
         private int _cellSpacing = 10;
@@ -69,12 +70,17 @@ namespace Bingo
 
         public void Change(int number, CellState state, bool invalidate = true)
         {
-            _cells[number - 1] = state;
-            _lastExtracted = number - 1;
+            --number;
+            
+            _cells[number] = state;
+            _lastExtracted = number;
             if (invalidate)
                 Invalidate();
+            
+            if (state == CellState.LastExtracted)
+                OnExtracted(number);
         }
-
+        
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int CellSize
         {
@@ -143,6 +149,14 @@ namespace Bingo
                     Invalidate();
                 }
             }
+        }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        public event EventHandler<ExtractedEventArgs> Extracted;
+
+        private void OnExtracted(int position)
+        {
+            Extracted?.Invoke(this, new ExtractedEventArgs(position));
         }
     }
 }
