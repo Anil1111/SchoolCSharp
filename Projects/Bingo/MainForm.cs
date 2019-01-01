@@ -1,27 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.Globalization;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
 namespace Bingo
 {
     public partial class MainForm : Form
     {
-        private readonly BindingList<int> _extractedNumbers = new BindingList<int>();
+        private readonly int[] _extractedNumbers = new int[90];
+        private int[] _sortedIndices;
+        private int _extractedCount;
+        
         private readonly Randomizer _randomizer;
+        private int _lastNumber;
         private Sequence _lastSequence;
-        private int _lastNumber = -1;
-        private bool _sort;
+        private Sort _sort;
         
         public MainForm()
         {
             InitializeComponent();
             _randomizer = new Randomizer(1, 90);
-            lstNumbers.DataSource = _extractedNumbers;
         }
 
         private void OnExtract(object sender, EventArgs e)
         {
+            // Disable the button if no numbers left
             if (_randomizer.RemainingNumbers == 0)
             {
                 billboard.Change(_lastNumber, CellState.Extracted);
@@ -30,9 +37,11 @@ namespace Bingo
                 return;
             }
             
-            if (_lastNumber != -1)
+            // Change the last extracted cell to Extracted
+            if (_lastNumber > 0)
                 billboard.Change(_lastNumber, CellState.Extracted, false);
 
+            // Extract a random number
             _lastNumber = _randomizer.Next;
             billboard.Change(_lastNumber, CellState.LastExtracted);
             txtLastExtracted.Text = _lastNumber.ToString("00");
@@ -41,21 +50,22 @@ namespace Bingo
         private void OnExtracted(object sender, ExtractedEventArgs e)
         {
             ListNumber(_lastNumber);
+            CheckForSequences(e.Column, e.Row);
+        }
+        
+        private void CheckForSequences(int cellColumn, int cellRow)
+        {
             if (_lastSequence < Sequence.Cinquina)
             {
-                Console.WriteLine("Checking {0},{1}", e.Column, e.Row);
                 Sequence extractedInRow = 0;
                 foreach (var number in _extractedNumbers)
                 {
                     var row = (number - 1) / 10 % 10;
-                    if (e.Row == row)
+                    if (cellRow == row)
                     {
                         var column = (number - 1) % 10;
-                        if (column < e.Column / 5 * 5 + 5 && column >= e.Column / 5 * 5)
-                        {
-                            Console.WriteLine("Found one in {0},{1}", column, row);
+                        if (column < cellColumn / 5 * 5 + 5 && column >= cellColumn / 5 * 5)
                             ++extractedInRow;
-                        }
                     }
                 }
 
@@ -66,13 +76,14 @@ namespace Bingo
                         case Sequence.Ambo:
                             MessageBox.Show($"{extractedInRow} estratto", "Estrazione", MessageBoxButtons.OK);
                             break;
-                        
+
                         case Sequence.Terna:
                         case Sequence.Quaterna:
                         case Sequence.Cinquina:
                             MessageBox.Show($"{extractedInRow} estratta", "Estrazione", MessageBoxButtons.OK);
                             break;
                     }
+
                     _lastSequence = extractedInRow;
                 }
             }
@@ -83,8 +94,8 @@ namespace Bingo
                 {
                     var row = (number - 1) / 10 % 10;
                     var column = (number - 1) % 10;
-                    if (row    < e.Row    / 3 * 3 + 3 && row    >= e.Row    / 3 * 3 &&
-                        column < e.Column / 5 * 5 + 5 && column >= e.Column / 5 * 5)
+                    if (row    < cellRow    / 3 * 3 + 3 && row    >= cellRow    / 3 * 3 &&
+                        column < cellColumn / 5 * 5 + 5 && column >= cellColumn / 5 * 5)
                         ++extractedInCard;
                 }
 
@@ -99,91 +110,66 @@ namespace Bingo
         private void ListNumber(int number)
         {
             var position = lstNumbers.TopIndex;
-            
-            if (_sort)
+
+            switch (_sort)
             {
-                var insertIndex = ~BinarySearch(_extractedNumbers, number);
-                _extractedNumbers.Insert(insertIndex, number);
+                case Sort.Number:
+                    // Get index of insertion
+                    var insertIndex = ~Utility.BinarySearch(_sortedIndices, _extractedNumbers, _extractedCount, number);
+                    _sortedIndices.Insert(insertIndex, _extractedCount);
+                    
+                    // Insert the number in the ListBox
+                    lstNumbers.Items.Insert(insertIndex, Utility.ExtractedString(_extractedCount, number));
+                    
+                    // Fixes auto-scrolling in ListBox
+                    if (insertIndex < position)
+                        position += 1;
+                    lstNumbers.TopIndex = position;
+                    break;
                 
-                // Fixes list random scrolling
-                if (insertIndex < position)
-                    position += 1;
-                lstNumbers.TopIndex = position;
-                return;
+                case Sort.Extraction:
+                    // Adds the number in the ListBox
+                    lstNumbers.Items.Add(Utility.ExtractedString(_extractedCount, number));
+
+                    // Auto-scrolls the ListBox
+                    lstNumbers.TopIndex = _extractedCount;
+                    break;
+                
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(_sort));
             }
             
-            _extractedNumbers.Insert(0, number);
-            if (position > 0)
-                position += 1;
+            // Add the number to the array
+            _extractedNumbers[_extractedCount] = number;
             
-            // Fixes list random scrolling
-            lstNumbers.TopIndex = position;
+            // Update the extracted count
+            ++_extractedCount;
         }
+
 
         private void OnSortChanged(object sender, EventArgs e)
         {
-            _sort = !_sort;
-            
-            if (_sort)
-                QuickSort(_extractedNumbers, 0, _extractedNumbers.Count - 1, 45);
-        }
+            _sort = (Sort) ((byte) ++_sort % 2);
 
-        private static int BinarySearch(IReadOnlyList<int> array, int value)
-        {
-            int left = 0;
-            int right = array.Count - 1;
-            while (left <= right)
+            lstNumbers.Items.Clear();
+            switch (_sort)
             {
-                int median = left + (right - left >> 1);
+                case Sort.Number:
+                    _sortedIndices = Enumerable.Range(0, 90).ToArray();
+                    Utility.QuickSort(_sortedIndices, _extractedNumbers, 0, _extractedCount - 1, 45);
                 
-                var cmp = array[median].CompareTo(value);
-                if (cmp == 0)
-                    return median;
-                if (cmp < 0)
-                    left = median + 1;
-                else
-                    right = median - 1;
+                    for (int i = 0; i < _extractedCount; i++)
+                    {
+                        var index = _sortedIndices[i];
+                        lstNumbers.Items.Add(Utility.ExtractedString(index, _extractedNumbers[index]));
+                    }
+                    break;
+                
+                case Sort.Extraction:
+                    for (int i = 0; i < _extractedCount; i++)
+                        lstNumbers.Items.Add(Utility.ExtractedString(i, _extractedNumbers[i]));
+                    break;
             }
-        
-            return ~left;
-        }
-
-        private static void QuickSort(IList<int> array, int leftIndex, int rightIndex, int pivot)
-        {
-            if (leftIndex > rightIndex) return;
-        
-            int left = leftIndex;
-            int right = rightIndex;
-        
-            while (left <= right)
-            {
-                while (left < rightIndex && array[left] < pivot)
-                    left++;
-                while (right > leftIndex && array[right] > pivot)
-                    right--;
-        
-                if (left == right)
-                {
-                    left++;
-                    right--;
-                    continue;
-                }
-        
-                if (left < right)
-                    Swap(array, left++, right--);
-            }
-        
-            if (leftIndex < right)
-                QuickSort(array, leftIndex, right, array[leftIndex + (right - leftIndex >> 1)]);
-            if (left < rightIndex)
-                QuickSort(array, left, rightIndex, array[left + (rightIndex - left >> 1)]);
-        }
-
-        private static void Swap(IList<int> array, int first, int second)
-        {
-            var tmp = array[first];
-            array[first] = array[second];
-            array[second] = tmp;
         }
     }
 }
