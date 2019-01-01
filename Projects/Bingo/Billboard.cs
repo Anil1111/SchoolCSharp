@@ -16,8 +16,6 @@ namespace Bingo
         private Color _lastShown = Color.Yellow;
         private Color _shown     = Color.Red;
 
-        private int _lastExtracted = -1;
-
         public Billboard()
         {
             InitializeComponent();
@@ -73,10 +71,9 @@ namespace Bingo
             --number;
             
             _cells[number] = state;
-            _lastExtracted = number;
             if (invalidate)
                 Invalidate();
-            
+
             if (state == CellState.LastExtracted)
                 OnExtracted(number);
         }
