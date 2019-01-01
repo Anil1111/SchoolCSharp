@@ -15,7 +15,7 @@ namespace Bingo
             _array = new int[_length];
 
             for (int i = 0; i < _length; i++)
-                _array[i] = i + min;
+                _array[i] = min + i;
         }
 
         public int RemainingNumbers => _length;
@@ -28,12 +28,6 @@ namespace Bingo
                     throw new IndexOutOfRangeException("Array is empty");
 
                 var index = _rand.Next(_length);
-
-                if (index == _length - 1)
-                {
-                    _length--;
-                    return _array[index];
-                }
 
                 var number = _array[index];
                 _array[index] = _array[--_length];
