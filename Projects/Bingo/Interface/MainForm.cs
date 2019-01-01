@@ -12,7 +12,7 @@ namespace Bingo.Interface
         private int[] _sortedIndices;
         private int _extractedCount;
         
-        private readonly Randomizer _randomizer;
+        private Randomizer _randomizer;
         private int _lastNumber;
         private Sequence _lastSequence;
         private Sort _sort;
@@ -55,8 +55,9 @@ namespace Bingo.Interface
             if (_lastSequence < Sequence.Cinquina)
             {
                 Sequence extractedInRow = 0;
-                foreach (var number in _extractedNumbers)
+                for (int i = 0; i < _extractedCount; i++)
                 {
+                    var number = _extractedNumbers[i];
                     var row = (number - 1) / 10 % 10;
                     if (cellRow == row)
                     {
@@ -87,8 +88,9 @@ namespace Bingo.Interface
             else if (_lastSequence < Sequence.Tombola)
             {
                 Sequence extractedInCard = 0;
-                foreach (var number in _extractedNumbers)
+                for (int i = 0; i < _extractedCount; i++)
                 {
+                    var number = _extractedNumbers[i];
                     var row = (number - 1) / 10 % 10;
                     var column = (number - 1) % 10;
                     if (row    < cellRow    / 3 * 3 + 3 && row    >= cellRow    / 3 * 3 &&
@@ -146,7 +148,7 @@ namespace Bingo.Interface
 
         private void OnSortChanged(object sender, EventArgs e)
         {
-            _sort = (Sort) ((byte) ++_sort % 2);
+            _sort = sortExtraction.Checked ? Sort.Extraction : Sort.Number;
 
             lstNumbers.Items.Clear();
             switch (_sort)
@@ -167,6 +169,23 @@ namespace Bingo.Interface
                         lstNumbers.Items.Add(Utility.ExtractedString(i, _extractedNumbers[i]));
                     break;
             }
+        }
+
+        private void OnRestore(object sender, EventArgs e)
+        {
+            _extractedCount = 0;
+            _lastNumber = 0;
+            _lastSequence = 0;
+            _sort = 0;
+            _sortedIndices = null;
+            _randomizer = new Randomizer(1, 90);
+
+            txtLastExtracted.Text = "00";
+            billboard.Clear();
+            lstNumbers.Items.Clear();
+            sortNumber.Checked = false;
+            sortExtraction.Checked = true;
+            btnExtract.Enabled = true;
         }
     }
 }

@@ -79,7 +79,14 @@ namespace Bingo.Interface
             if (state == CellState.LastExtracted)
                 OnExtracted(number);
         }
-        
+
+        public void Clear()
+        {
+            Array.Clear(_cells, 0, _cells.Length);
+            Invalidate();
+        }
+
+
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public int CellSize
         {
