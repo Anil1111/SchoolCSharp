@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set di attributi. Modificare i valori di questi attributi per modificare le informazioni
 // associate a un assembly.
 [assembly: AssemblyTitle("Bingo")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Il gioco di Bingo")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Bingo")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright © Hawk of the Death 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
