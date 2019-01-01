@@ -1,4 +1,6 @@
-﻿namespace Bingo
+﻿using Bingo.Events;
+
+namespace Bingo.Interface
 {
     partial class MainForm
     {
@@ -33,7 +35,7 @@
             this.txtLastExtracted = new System.Windows.Forms.RichTextBox();
             this.lstNumbers = new System.Windows.Forms.ListBox();
             this.chkSort = new System.Windows.Forms.CheckBox();
-            this.billboard = new Bingo.Billboard();
+            this.billboard = new Billboard();
             this.SuspendLayout();
             // 
             // btnExtract
@@ -112,7 +114,7 @@
             this.billboard.Size = new System.Drawing.Size(410, 391);
             this.billboard.TabIndex = 0;
             this.billboard.TabStop = false;
-            this.billboard.Extracted += new System.EventHandler<Bingo.ExtractedEventArgs>(this.OnExtracted);
+            this.billboard.Extracted += new System.EventHandler<ExtractedEventArgs>(this.OnExtracted);
             // 
             // MainForm
             // 

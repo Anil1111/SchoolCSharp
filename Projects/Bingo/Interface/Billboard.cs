@@ -2,8 +2,10 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using Bingo.Enums;
+using Bingo.Events;
 
-namespace Bingo
+namespace Bingo.Interface
 {
     public partial class Billboard : Control
     {

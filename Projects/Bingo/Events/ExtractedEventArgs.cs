@@ -1,4 +1,4 @@
-namespace Bingo
+namespace Bingo.Events
 {
     public class ExtractedEventArgs
     {

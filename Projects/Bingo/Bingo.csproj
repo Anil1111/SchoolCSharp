@@ -46,27 +46,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sequence.cs" />
-    <Compile Include="Billboard.cs">
+    <Compile Include="Enums\CellState.cs" />
+    <Compile Include="Enums\Sequence.cs" />
+    <Compile Include="Enums\Sort.cs" />
+    <Compile Include="Events\ExtractedEventArgs.cs" />
+    <Compile Include="Interface\Billboard.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Billboard.Designer.cs">
+    <Compile Include="Interface\Billboard.Designer.cs">
       <DependentUpon>Billboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="CellState.cs" />
-    <Compile Include="ExtractedEventArgs.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="Interface\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Interface\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Randomizer.cs" />
-    <Compile Include="Sort.cs" />
     <Compile Include="Utility.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Interface\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -87,9 +87,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interface" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

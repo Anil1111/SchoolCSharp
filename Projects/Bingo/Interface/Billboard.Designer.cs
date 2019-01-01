@@ -1,4 +1,4 @@
-﻿namespace Bingo
+﻿namespace Bingo.Interface
 {
     sealed partial class Billboard
     {

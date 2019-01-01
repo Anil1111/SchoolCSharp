@@ -1,4 +1,4 @@
-namespace Bingo
+namespace Bingo.Enums
 {
     public enum Sort : byte
     {

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Globalization;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using Bingo.Enums;
+using Bingo.Events;
 
-namespace Bingo
+namespace Bingo.Interface
 {
     public partial class MainForm : Form
     {
